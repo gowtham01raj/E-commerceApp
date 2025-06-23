@@ -1,71 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+export const CDN_Link =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
-/**
- * Header
- *  -Logo
- *  -NavBar
- * Body
- *      - Searchbar
- *     - Restaruantlist---->Restaurantcard ->img,Name,Rating,Price
- * Footer
- * - Social media icons
- * - Privacy policy
- *  copyright © 2022 Your Website. All rights reserved.
- */
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logoContainer">
-        <img
-          className="logo"
-          src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/meal-menue-logo-design-template-ca4328b873982607c2c66ab6d4f8ae45_screen.jpg?ts=1681605842"
-          alt="Logo"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Cart</li>
-          <li>Contact</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = ({
-  name,
-  locality,
-  cuisines,
-  costForTwo,
-  avgRating,
-  cloudinaryImageId,
-}) => {
-  // const { resData } = props;/
-  // const { name, locality, cuisines, costForTwo, avgRating, cloudinaryImageId } = props;
-  // props;
-
-  return (
-    <div className="res-card">
-      <img
-        className="res-logo"
-        alt="res-logo"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-      ></img>
-      <h3>{name}</h3>
-      <h4>{locality}</h4>
-      <h4>{cuisines}</h4>
-      <h5>{costForTwo}</h5>
-      <h5>{avgRating}</h5>
-    </div>
-  );
-};
+export const Logolink =
+  "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/meal-menue-logo-design-template-ca4328b873982607c2c66ab6d4f8ae45_screen.jpg?ts=1681605842";
 
 const ResData = [
   {
@@ -979,9 +916,7 @@ const ResData = [
       type: "WEBLINK",
     },
   },
-  {},
-  {},
-  {},
+
   {
     info: {
       id: "101642",
@@ -1434,27 +1369,4 @@ const ResData = [
   },
 ];
 
-const Body = () => (
-  <div className="body">
-    <div className="search">Search</div>
-    <div className="res-container">
-      {ResData.map((info, index) => {
-        return <RestaurantCard key={index} {...info.info} />;
-      })}
-    </div>
-  </div>
-);
-
-const Footer = () => <div>Footer</div>;
-const AppLayout = () => (
-  <div className="app">
-    <React.Fragment>
-      <Header />
-      <Body />
-      <Footer />
-    </React.Fragment>
-  </div>
-);
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout />);
+export default ResData;

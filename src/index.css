@@ -29,9 +29,10 @@
   width: 200px;
   padding: 1px 2px;
   /* height: 350px; */
-  margin: 4px 2px;
+  display: list-item;
+  margin: 4px 4px;
   border: 1px;
-  background-color: lightgray;
+  background-color: yellowgreen;
 }
 
 .res-card:hover {
