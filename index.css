@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.logo {
+  width: 100px;
+}
+
+.nav-items > ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0px 50px;
+  font-size: 15px;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+.res-card {
+  width: 200px;
+  padding: 2px 3px;
+  height: 300px;
+  border: 1px solid black;
+  background-color: azure;
+}
+
+.res-card:hover{
+    border: 2px solid grey;
+    background-color: yellow;
+}
+.search {
+  padding: 20px;
+}
+
+.res-logo{
+    width: 200px;
+    height: 30%;
+}
