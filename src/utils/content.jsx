@@ -4,6 +4,9 @@ export const CDN_Link =
 export const Logolink =
   "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/meal-menue-logo-design-template-ca4328b873982607c2c66ab6d4f8ae45_screen.jpg?ts=1681605842";
 
+
+export const FooterLogo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSo3YoM7DNK0mUQ31OZNpDSvYE9sQJllEWeg&s"
+
 const ResData = [
   {
     info: {
