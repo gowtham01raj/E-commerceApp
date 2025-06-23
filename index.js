@@ -36,22 +36,132 @@ const Header = () => {
   );
 };
 
-const RestaurantCard=()=>(
-    <div className="res-card" style={{backgroundColor:"white"}}>
-      <img className="res-logo" alt="res-logo" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/vkhcohhmqfczycw9vsar"></img>
-      <h3>Meghana Foods</h3>
-      <h4>Briyani Food</h4>
-      <h5>Rs. 250</h5>
-      <h5>4.4 Stars</h5>
-      <h5>35 minutes away</h5>
+const RestaurantCard = (props) => {
+  const { Name, hotel, cost, Rating, distance } = props; // destructuring the props to get the values directly.
+
+  return (
+    <div className="res-card">
+      <img
+        className="res-logo"
+        alt="res-logo"
+        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/vkhcohhmqfczycw9vsar"
+      ></img>
+      <h3>{Name}</h3>
+      <h4>{hotel}</h4>
+      <h5>{cost}</h5>
+      <h5>{Rating}</h5>
+      <h5>{distance}</h5>
     </div>
-)
+  );
+};
 
 const Body = () => (
   <div className="body">
     <div className="search">Search</div>
     <div className="res-container">
-      <RestaurantCard></RestaurantCard>
+      <RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      /><RestaurantCard
+        Name="Meghana Foods"
+        hotel="Briyani Food"
+        cost="Rs.250"
+        Rating="4.4 stars"
+        distance="35 minutes Away"
+      />
     </div>
   </div>
 );
