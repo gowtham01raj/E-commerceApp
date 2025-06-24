@@ -1,11 +1,7 @@
 import RestaurantCard from "./RestaurantCardList";
 import ResData, { CDN_Link } from "../utils/content";
-<<<<<<< HEAD
-import { useEffect, useState } from "react";
-=======
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
->>>>>>> demo
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
@@ -16,12 +12,6 @@ function filterData(searchText, restaurants) {
 
 const Body = () => {
   const [searchText, setSearchText] = useState(""); //Searchtxt is a local variable. To create a state variable.
-<<<<<<< HEAD
-  const [restaurants, setRestaurants] = useState(ResData);
-
-
-  return (
-=======
   const [listofRestaurant, setListofRestaurant] = useState([]);
   const [filterRestaurant, setFilterRestaurant] = useState([]);
 
@@ -47,7 +37,6 @@ const Body = () => {
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
->>>>>>> demo
     <>
       <div className="body">
         <div className="search-container">
