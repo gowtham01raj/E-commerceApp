@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCardList";
 import ResData, { CDN_Link } from "../utils/content";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
@@ -12,6 +12,8 @@ function filterData(searchText, restaurants) {
 const Body = () => {
   const [searchText, setSearchText] = useState(""); //Searchtxt is a local variable. To create a state variable.
   const [restaurants, setRestaurants] = useState(ResData);
+
+
   return (
     <>
       <div className="body">
