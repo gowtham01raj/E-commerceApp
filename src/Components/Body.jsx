@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
-    restaurant?.data?.name.toLowerCase().includes(searchText.toLowerCase())
+    restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
   );
   return filterData;
 }
@@ -37,7 +37,7 @@ const Body = () => {
         </div>
         <div className="res-container">
           {restaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
+            <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
           ))}
         </div>
       </div>
