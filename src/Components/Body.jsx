@@ -1,5 +1,5 @@
 import RestaurantCard from "./RestaurantCardList";
-import ResData, { CDN_Link } from "../utils/content";
+import ResData, { CDN_Link, Swiggy_Link } from "../utils/content";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
@@ -20,9 +20,7 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0843007&lng=80.2704622&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(Swiggy_Link);
     const json = await data.json();
 
     setListofRestaurant(
@@ -60,9 +58,13 @@ const Body = () => {
           </button>
         </div>
         <div className="res-container">
-          {filterRestaurant.map((restaurant) => (
-            <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
-          ))}
+          {filterRestaurant.length === 0 ? (
+            <h1>Restaurant not available</h1>
+          ) : (
+            filterRestaurant.map((restaurant) => (
+              <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+            ))
+          )}
         </div>
       </div>
     </>

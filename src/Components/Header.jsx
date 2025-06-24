@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Logolink } from "../utils/content";
 
-
 const Header = () => {
-  const [btnName, setBtnName] = useState("Login");
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <div className="header">
@@ -16,14 +15,15 @@ const Header = () => {
           <li>About</li>
           <li>Cart</li>
           <li>Contact</li>
-          <button
-            className="btn-login"
-            onClick={() => {
-              btnName==="Login" ?  setBtnName("Logout"): setBtnName("Login");
-            }}
-          >
-            {btnName}
-          </button>
+          {isLoggedIn ? (
+            <button className="btn-login" onClick={() => setIsLoggedIn(false)}>
+              Login
+            </button>
+          ) : (
+            <button className="btn-login" onClick={() => setIsLoggedIn(true)}>
+              Logout
+            </button>
+          )}
         </ul>
       </div>
     </div>
