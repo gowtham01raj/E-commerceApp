@@ -3,8 +3,8 @@ import ResData, { CDN_Link } from "../utils/content";
 import { useState } from "react";
 
 function filterData(searchText, restaurants) {
-  const filterData = restaurants.filter((info) =>
-    info.info.name.includes(searchText)
+  const filterData = restaurants.filter((restaurant) =>
+    restaurant?.data?.name.toLowerCase().includes(searchText.toLowerCase())
   );
   return filterData;
 }
@@ -36,8 +36,8 @@ const Body = () => {
           </button>
         </div>
         <div className="res-container">
-          {restaurants.map((info, index) => (
-            <RestaurantCard key={info.info.id} {...info.info} />
+          {restaurants.map((restaurant) => (
+            <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
           ))}
         </div>
       </div>
