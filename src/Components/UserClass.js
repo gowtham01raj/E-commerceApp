@@ -22,7 +22,7 @@ class UserClass extends React.Component {
         }} >Count Increase</button>
         <h2>Name:{this.props.name}</h2>
         <h2>Id:About us</h2>
-        <h2>Email:gowthamraj.ts@gmiail.com</h2>
+        <h2>Email:gowthamraj.ts@gmail.com</h2>
       </div>
     );
   }

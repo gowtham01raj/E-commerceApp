@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Logolink } from "../utils/content";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import UserOffline from "./UserOffline";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-
+  const isOnline=useOnlineStatus();
   return (
     <div className="header">
       <div className="logoContainer">
@@ -14,6 +16,10 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li>
+            {isOnline ? "✅" : "❌"}
+          </li>
+          <Link to="/instamart"><button>Instamart</button></Link>
           <Link to="/">
             <li>Home</li>
           </Link>

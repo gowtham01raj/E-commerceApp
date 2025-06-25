@@ -11,7 +11,8 @@ const RestaurantCard = ({
   costForTwo,
   avgRatingString,
 }) => {
-  return (
+
+  return  (
     <div className="restaurant-card"  >
       <Link to={`/restaurant/${id}`}>
       <img

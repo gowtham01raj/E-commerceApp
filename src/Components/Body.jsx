@@ -1,19 +1,21 @@
 import RestaurantCard from "./RestaurantCardList";
 import ResData, { CDN_Link, Swiggy_Link } from "../utils/content";
 import { useState, useEffect } from "react";
-import {Shimmer} from "./Shimmer";
-
-function filterData(searchText, restaurants) {
+import { RestaurantMenuShimmer, Shimmer } from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import UserOffline from "./UserOffline";
+const filterData = (searchText, restaurants) => {
   const filterData = restaurants.filter((restaurant) =>
     restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
   );
   return filterData;
-}
+};
 
 const Body = () => {
   const [searchText, setSearchText] = useState(""); //Searchtxt is a local variable. To create a state variable.
   const [listofRestaurant, setListofRestaurant] = useState([]);
   const [filterRestaurant, setFilterRestaurant] = useState([]);
+
 
   useEffect(() => {
     fetchData();
@@ -30,7 +32,9 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  //Conditional rendering........
+    const isOnline = useOnlineStatus();
+
+  if (isOnline===false) return <UserOffline />;
 
   return listofRestaurant.length === 0 ? (
     <Shimmer />
@@ -62,7 +66,10 @@ const Body = () => {
             <h1>Restaurant not available</h1>
           ) : (
             filterRestaurant.map((restaurant) => (
-              <RestaurantCard key={restaurant?.info?.id} {...restaurant?.info} />
+              <RestaurantCard
+                key={restaurant?.info?.id}
+                {...restaurant?.info}
+              />
             ))
           )}
         </div>

@@ -3,12 +3,19 @@ import ReactDOM from "react-dom/client";
 import Header from "./Components/Header.jsx";
 import { Footer } from "./Components/Footer.jsx";
 import Body from "./Components/Body.jsx";
-import About from "./Components/About.js";
+// import About from "./Components/About.js";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
 import Error from "./Components/Error.js";
-import Cart from "./Components/Cart.js";
-import Contact from "./Components/Contact.js";
+// import Cart from "./Components/Cart.js";
+// import Contact from "./Components/Contact.js";
 import RestaurantMenu from "./Components/RestaurantMenu.js";
+import { lazy,Suspense } from "react";
+import { Shimmer } from "./Components/Shimmer.js";
+// import Instamart from "./Components/Instamart.js";
+const Contact=lazy(()=> import('./Components/Contact.js'));
+const Instamart=lazy(()=> import("./Components/Instamart"));
+const About=lazy(()=> import('./Components/About.js'));
+const Cart=lazy(()=> import('./Components/Cart.js'));
 const AppLayout = () => (
   <div className="app">
     <React.Fragment>
@@ -44,6 +51,11 @@ const appRouter = createBrowserRouter([
       {
         path:"/restaurant/:resId",
         element:<RestaurantMenu/>
+      },
+      {
+        path:"/instamart",
+        element:<Suspense fallback={<Shimmer/>} ><Instamart/></Suspense>
+        
       }
     ],
   },

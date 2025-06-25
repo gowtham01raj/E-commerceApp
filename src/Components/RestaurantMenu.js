@@ -1,29 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { CDN_Link, Menu_Link, Swiggy_Link } from "../utils/content";
 import { RestaurantMenuShimmer } from "./Shimmer";
 import { MdStarRate } from "react-icons/md";
+import useRestaraurantMenu from "../utils/useRestaraurantMenu";
+import { CDN_Link } from "../utils/content";
+
 
 const RestaurantMenu = () => {
-  const [restaurantInfo, setRestaurantInfo] = useState(null);
-  const { resId } = useParams();
-
-  const fetchMenusData = async () => {
-    try {
-      const data = await fetch(Menu_Link + resId);
-      const json = await data.json();
-
-      setRestaurantInfo(json?.data);
-      console.log(restaurantInfo);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchMenusData();
-  }, [resId]);
-
+  const resId=useParams();
+  const restaurantInfo=useRestaraurantMenu(resId);
   if (restaurantInfo === null) {
     return <RestaurantMenuShimmer />;
   }

@@ -1,6 +1,6 @@
 export const Shimmer = () => {
   return (
-    <div className="shimmer-container">
+    <div className="shimmer-menu">
       {Array(20)
         .fill("")
         .map((e,index) => (
