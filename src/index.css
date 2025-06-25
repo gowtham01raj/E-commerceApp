@@ -3,7 +3,66 @@
   justify-content: space-between;
   border: 1px solid black;
 }
+/* Select all CSS */
+* {
+  margin: 0px;
+  padding: 1px;
+  box-sizing: border-box;
+  /* overflow-x: hidden; */
+}
+::-webkit-scrollbar {
+  width: 7px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body {
+  background-color: white;
+  font-family: ProximaNova, arial, "Helvetica Neue", sans-serif;
+}
+
+a,
+Link {
+  text-decoration: none;
+}
+.header a,
+Link {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  transform-origin: 20px;
+}
+
+.header a:hover,
+Link:hover {
+  color: #e46f20;
+}
+
+.header li {
+  font-size: medium;
+  padding: 2px;
+  flex-direction: column;
+  object-fit: cover;
+  text-decoration-line: none;
+  color: black;
+  text-decoration-line: none;
+  text-align: center;
+}
 .logo {
   width: 100px;
 }
@@ -100,6 +159,7 @@
 .restaurant-card:hover {
   border-color: #e46f20;
   border-radius: 1px solid;
+  background-color: aqua;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 /* .menu-img{
@@ -228,8 +288,7 @@
   background-color: #d7d6d6;
   height: 200px;
 }
-.about{
+.about {
   border: 1px solid black;
   padding: 20px;
-  
 }
