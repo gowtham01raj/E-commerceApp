@@ -1,7 +1,7 @@
 import RestaurantCard from "./RestaurantCardList";
 import ResData, { CDN_Link, Swiggy_Link } from "../utils/content";
 import { useState, useEffect } from "react";
-import Shimmer from "./Shimmer";
+import {Shimmer} from "./Shimmer";
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
@@ -62,7 +62,7 @@ const Body = () => {
             <h1>Restaurant not available</h1>
           ) : (
             filterRestaurant.map((restaurant) => (
-              <RestaurantCard key={restaurant.info.id} {...restaurant.info} />
+              <RestaurantCard key={restaurant?.info?.id} {...restaurant?.info} />
             ))
           )}
         </div>
