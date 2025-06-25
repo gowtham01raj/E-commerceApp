@@ -70,7 +70,6 @@
   justify-content: center;
 }
 
-
 .shimmer-container {
   display: flex;
   flex-wrap: wrap;
@@ -90,17 +89,17 @@
   background-color: green;
 }
 
-.restaurant-image{
+.restaurant-image {
   width: 200px;
   height: 200px;
 }
-.restaurant-card{
+.restaurant-card {
   padding: 5px;
   border: 1px;
 }
-.restaurant-card:hover{
-  border-color: #E46F20;
-  border-radius: 1px solid ;
+.restaurant-card:hover {
+  border-color: #e46f20;
+  border-radius: 1px solid;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 /* .menu-img{
@@ -111,12 +110,12 @@
   /* display: flex; */
   width: 60%;
 }
-.shimmer-menu{
+.shimmer-menu {
   width: 60%;
 }
 
-
-.restaurant-header, .shimmer-menu .shimmer-card {
+.restaurant-header,
+.shimmer-menu .shimmer-card {
   display: flex;
   align-items: center;
   background-color: black;
@@ -171,7 +170,8 @@
   margin-right: 5px;
 }
 
-.menu-items, .shimmer-menu .shimmer-card {
+.menu-items,
+.shimmer-menu .shimmer-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -219,7 +219,7 @@
 }
 
 .right .add-btn:hover {
-  background-color: #E46F20;
+  background-color: #e46f20;
   color: white;
   transition: 0.3s;
 }
@@ -227,4 +227,9 @@
 .shimmer-menu .shimmer-card {
   background-color: #d7d6d6;
   height: 200px;
+}
+.about{
+  border: 1px solid black;
+  padding: 20px;
+  
 }

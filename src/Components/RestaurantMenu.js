@@ -42,7 +42,6 @@ const RestaurantMenu = () => {
     restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
   let itemCards =
     cards.find((c) => c?.card?.card?.itemCards)?.card?.card?.itemCards || [];
-  console.log(cards, itemCards);
   return (
     <div className="menu">
       <div className="restaurant-header">
