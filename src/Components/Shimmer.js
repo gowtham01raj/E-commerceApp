@@ -31,11 +31,15 @@ export const RestaurantMenuShimmer = () => {
           </div>
         </div>
       </div>
-<div className="mx-auto flex align-baseline bg-black-300 p-5 m-2 mb-6 overflow-hidden h-full max-w-sm rounded-md border border-blue-300">        <div className="grid grid-cols-3 gap-4">
-                <div className="col-span-2 h-4 rounded bg-gray-200"></div>
-                <div className="col-span-1 h-4 rounded bg-gray-200"></div>
-              </div>
-        <div className="right animate-pulse flex flex-col items-center justify-center"><div className="size-20 rounded-full bg-gray-200"></div></div>
+      <div className="mx-auto flex align-baseline bg-black-300 p-5 m-2 mb-6 overflow-hidden h-full max-w-sm rounded-md border border-blue-300">
+        {" "}
+        <div className="grid grid-cols-3 gap-4">
+          <div className="col-span-2 h-4 rounded bg-gray-200"></div>
+          <div className="col-span-1 h-4 rounded bg-gray-200"></div>
+        </div>
+        <div className="right animate-pulse flex flex-col items-center justify-center">
+          <div className="size-20 rounded-full bg-gray-200"></div>
+        </div>
       </div>
     </>
   );

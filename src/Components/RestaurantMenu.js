@@ -5,10 +5,9 @@ import { MdStarRate } from "react-icons/md";
 import useRestaraurantMenu from "../utils/useRestaraurantMenu";
 import { CDN_Link } from "../utils/content";
 
-
 const RestaurantMenu = () => {
-  const resId=useParams();
-  const restaurantInfo=useRestaraurantMenu(resId);
+  const resId = useParams();
+  const restaurantInfo = useRestaraurantMenu(resId);
   if (restaurantInfo === null) {
     return <RestaurantMenuShimmer />;
   }
@@ -25,12 +24,20 @@ const RestaurantMenu = () => {
 
   const cards =
     restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
-  let itemCards =
-    cards.find((c) => c?.card?.card?.itemCards)?.card?.card?.itemCards || [];
+  let { itemCards } =
+    cards.find((c) => c?.card?.card?.itemCards)?.card?.card || [];
+
+  const categories = cards.filter((c) => c?.card?.card?.["@type"]);
+  console.log(categories);
+
   return (
     <div className="menu w-[60%] px-4">
       <div className="restaurant-header flex align-middle bg-pink-300 p-5 m-2 mb-6 overflow-hidden">
-        <img className="w-[250px] h-[150px] object-cover rounded-2xl border-sky-100 mr-10 flex flex-wrap " src={CDN_Link + cloudinaryImageId} alt={name} />
+        <img
+          className="w-[250px] h-[150px] object-cover rounded-2xl border-sky-100 mr-10 flex flex-wrap "
+          src={CDN_Link + cloudinaryImageId}
+          alt={name}
+        />
         <div className="restaurant-header-details flex-col justify-center gap-[5px] flex">
           <h1 className="font-extrabold text-5xl">{name}</h1>
           <h3>{locality}</h3>
@@ -48,9 +55,8 @@ const RestaurantMenu = () => {
                 {avgRatingString || 3.8} ({totalRatingsString || "1K+ ratings"})
               </span>
               <span>| </span>
-            <span className="time">{sla?.slaString}</span>
+              <span className="time">{sla?.slaString}</span>
             </div>
-            
           </h4>
         </div>
       </div>
@@ -67,7 +73,10 @@ const RestaurantMenu = () => {
             description,
           } = item.card.info;
           return (
-            <div key={id} className="menu-items flex justify-between items-center px-10 border-b-2 gap-12 border-solid border-b-gray-200">
+            <div
+              key={id}
+              className="menu-items flex justify-between items-center px-10 border-b-2 gap-12 border-solid border-b-gray-200"
+            >
               <div className="left flex flex-col gap-[5px]">
                 <h2>{name}</h2>
                 <h4>₹{price / 100 || defaultPrice / 100}</h4>
@@ -88,9 +97,15 @@ const RestaurantMenu = () => {
                   </span>
                 </h4>
               </div>
-              <div className="right flex flex-col items-center justify-center">
-                <img className="w-[150px] h-[120px] object-cover rounded-2xl border-[5px]" src={CDN_Link + imageId} alt={name} />
-                <button className="add-btn h-[30px] text-amber-900 w-[50px] rounded-full bg-white  px-2 border-5 cursor-pointer border-none relative bottom-5  duration-200 font-medium  hover: bg-green-500 text-blue-950 duration-300">ADD</button>
+              <div className="right flex flex-col items-center justify-center py-1">
+                <img
+                  className="w-[150px] h-[120px] object-cover rounded-2xl border-[2px]"
+                  src={CDN_Link + imageId}
+                  alt={name}
+                />
+                <button className="add-btn h-[30px] text-black w-[50px] border-[1px] rounded-full px-2  cursor-pointer border-none relative bottom-5  font-medium  bg-violet-500 hover:bg-violet-600 focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700">
+                  ADD
+                </button>
               </div>
             </div>
           );
@@ -103,4 +118,4 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
-// 
+//
