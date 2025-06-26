@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCardList";
+import RestaurantCard, { withTotalRatingStrings } from "./RestaurantCardList";
 import ResData, { CDN_Link, Swiggy_Link } from "../utils/content";
 import { useState, useEffect } from "react";
 import { RestaurantMenuShimmer, Shimmer } from "./Shimmer";
@@ -15,7 +15,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState(""); //Searchtxt is a local variable. To create a state variable.
   const [listofRestaurant, setListofRestaurant] = useState([]);
   const [filterRestaurant, setFilterRestaurant] = useState([]);
-
+  const RestaurantCardStringed = withTotalRatingStrings(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -31,20 +31,21 @@ const Body = () => {
     setFilterRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    // console.log(listofRestaurant[0].info.totalRatingsString);
   };
-    const isOnline = useOnlineStatus();
+  const isOnline = useOnlineStatus();
 
-  if (isOnline===false) return <UserOffline />;
+  if (isOnline === false) return <UserOffline />;
 
   return listofRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="body">
-        <div className="search-container">
+      <div className="">
+        <div className="search-container filter flex items-center justify-center  m-4 p-4 ">
           <input
             type="text"
-            className="search-input"
+            className="search-input w-3xl border border-solid border-black"
             placeholder="Search"
             value={searchText}
             onChange={(e) => {
@@ -52,7 +53,7 @@ const Body = () => {
             }}
           />
           <button
-            className="search-btn"
+            className="search-btn mx-4 px-4 py-2 bg-green-200 hover:bg-amber-200 rounded-2xl text-center"
             onClick={() => {
               const data = filterData(searchText, listofRestaurant);
               setFilterRestaurant(data);
@@ -61,16 +62,22 @@ const Body = () => {
             Search
           </button>
         </div>
-        <div className="res-container">
+        <div className="res-container flex flex-wrap ">
           {filterRestaurant.length === 0 ? (
             <h1>Restaurant not available</h1>
           ) : (
-            filterRestaurant.map((restaurant) => (
-              <RestaurantCard
-                key={restaurant?.info?.id}
-                {...restaurant?.info}
-              />
-            ))
+            filterRestaurant.map((restaurant) =>
+              restaurant.info.totalRatingsString === "10k+" ? (
+                <RestaurantCardStringed 
+                  key={restaurant?.info?.id}
+                  {...restaurant?.info} />
+              ) : (
+                <RestaurantCard
+                  key={restaurant?.info?.id}
+                  {...restaurant?.info}
+                />
+              )
+            )
           )}
         </div>
       </div>

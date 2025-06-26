@@ -28,17 +28,17 @@ const RestaurantMenu = () => {
   let itemCards =
     cards.find((c) => c?.card?.card?.itemCards)?.card?.card?.itemCards || [];
   return (
-    <div className="menu">
-      <div className="restaurant-header">
-        <img src={CDN_Link + cloudinaryImageId} alt={name} />
-        <div className="restaurant-header-details">
-          <h1>{name}</h1>
+    <div className="menu w-[60%] px-4">
+      <div className="restaurant-header flex align-middle bg-pink-300 p-5 m-2 mb-6 overflow-hidden">
+        <img className="w-[250px] h-[150px] object-cover rounded-2xl border-sky-100 mr-10 flex flex-wrap " src={CDN_Link + cloudinaryImageId} alt={name} />
+        <div className="restaurant-header-details flex-col justify-center gap-[5px] flex">
+          <h1 className="font-extrabold text-5xl">{name}</h1>
           <h3>{locality}</h3>
           <p>{cuisines?.join(", ")}</p>
           <h4 className="rating-time">
-            <div className="rating">
+            <div className="rating flex text-sm">
               <MdStarRate
-                className="rating-logo"
+                className="rating-logo flex "
                 style={{
                   backgroundColor:
                     avgRatingString >= 4.0 ? "var(--green)" : "var(--red)",
@@ -47,9 +47,10 @@ const RestaurantMenu = () => {
               <span>
                 {avgRatingString || 3.8} ({totalRatingsString || "1K+ ratings"})
               </span>
-            </div>
-            <span>|</span>
+              <span>| </span>
             <span className="time">{sla?.slaString}</span>
+            </div>
+            
           </h4>
         </div>
       </div>
@@ -66,12 +67,12 @@ const RestaurantMenu = () => {
             description,
           } = item.card.info;
           return (
-            <div key={id} className="menu-items">
-              <div className="left">
+            <div key={id} className="menu-items flex justify-between items-center px-10 border-b-2 gap-12 border-solid border-b-gray-200">
+              <div className="left flex flex-col gap-[5px]">
                 <h2>{name}</h2>
                 <h4>₹{price / 100 || defaultPrice / 100}</h4>
                 <p>{(description && description.slice(0, 60)) || "Dummy"}</p>
-                <h4 className="rating">
+                <h4 className="rating flex">
                   <MdStarRate
                     className="rating-logo"
                     style={{
@@ -87,9 +88,9 @@ const RestaurantMenu = () => {
                   </span>
                 </h4>
               </div>
-              <div className="right">
-                <img src={CDN_Link + imageId} alt={name} />
-                <button className="add-btn">ADD</button>
+              <div className="right flex flex-col items-center justify-center">
+                <img className="w-[150px] h-[120px] object-cover rounded-2xl border-[5px]" src={CDN_Link + imageId} alt={name} />
+                <button className="add-btn h-[30px] text-amber-900 w-[50px] rounded-full bg-white  px-2 border-5 cursor-pointer border-none relative bottom-5  duration-200 font-medium  hover: bg-green-500 text-blue-950 duration-300">ADD</button>
               </div>
             </div>
           );
@@ -102,3 +103,4 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
+// 

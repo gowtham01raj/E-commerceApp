@@ -5,7 +5,7 @@ import { FooterLogo, Logolink } from "../utils/content";
 
 export const Footer = () => (
   <div>
-    <div className="footer-logo">
+    <div className="footer-logo flex flex-wrap">
       <h1>For better experience,download the Swiggy app now</h1>
       <img
         className="playstore"
@@ -13,9 +13,9 @@ export const Footer = () => (
         src={FooterLogo}
       />
     </div>
-    <div className="footerlogo2">
+    <div className="footerlogo2 w-[200px]">
         {/* <img src={Logolink} alt="footerLogolink"/> */}
-        <span>© 2025 Swiggy Limited</span>
+        <span className="items-center justify-center">© 2025 Swiggy Limited</span>
     </div>
   </div>
 );
