@@ -19,8 +19,7 @@ const Body = () => {
   const [filterRestaurant, setFilterRestaurant] = useState([]);
   const RestaurantCardStringed = withTotalRatingStrings(RestaurantCard);
 
-    const {loginUser,setShowName}=useContext(userContext);
-console.log(setShowName);
+  const { loginUser, setShowName } = useContext(userContext);
   useEffect(() => {
     fetchData();
   }, []);
@@ -65,7 +64,11 @@ console.log(setShowName);
           >
             Search
           </button>
-          <input className="border border-black " value={loginUser} onChange={(e)=>setShowName(e.target.value)} ></input>
+          <input
+            className="border border-black "
+            value={loginUser}
+            onChange={(e) => setShowName(e.target.value)}
+          ></input>
         </div>
         <div className="res-container flex flex-wrap ">
           {filterRestaurant.length === 0 ? (
@@ -73,9 +76,10 @@ console.log(setShowName);
           ) : (
             filterRestaurant.map((restaurant) =>
               restaurant.info.totalRatingsString === "10k+" ? (
-                <RestaurantCardStringed 
+                <RestaurantCardStringed
                   key={restaurant?.info?.id}
-                  {...restaurant?.info} />
+                  {...restaurant?.info}
+                />
               ) : (
                 <RestaurantCard
                   key={restaurant?.info?.id}

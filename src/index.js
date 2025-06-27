@@ -12,6 +12,8 @@ import RestaurantMenu from "./Components/RestaurantMenu.js";
 import userContext from "./utils/userContext.jsx";
 import { lazy, Suspense } from "react";
 import { Shimmer } from "./Components/Shimmer.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 // import Instamart from "./Components/Instamart.js";
 const Contact = lazy(() => import("./Components/Contact.js"));
 const Instamart = lazy(() => import("./Components/Instamart"));
@@ -22,19 +24,19 @@ const AppLayout = () => {
   const [showName, setShowName] = useState();
   useEffect(() => {
     const data = {
-      name: "ECC",
+      name: "Gowtham",
     };
     setShowName(data.name);
   }, []);
   return (
     <div className="app">
-      <React.Fragment>
+      <><Provider store={appStore} >
         <userContext.Provider value={{ loginUser: showName, setShowName }}>
           <Header />
           <Outlet />
           <Footer />
-        </userContext.Provider>
-      </React.Fragment>
+        </userContext.Provider></Provider>
+      </>
     </div>
   );
 };
