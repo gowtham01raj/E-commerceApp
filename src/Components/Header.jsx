@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Logolink } from "../utils/content";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserOffline from "./UserOffline";
+import userContext from "../utils/userContext";
+import { useSelector, useDispatch } from "react-redux";
 
 const Header = () => {
+  const { loginUser } = useContext(userContext);
+  const cart = useSelector((store) => store.cart.items);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const isOnline = useOnlineStatus();
   return (
@@ -27,29 +31,46 @@ const Header = () => {
         <ul className="flex py-5">
           <li className="px-2">{isOnline ? "✅" : "❌"}</li>
           <Link to="/instamart">
-            <button className="px-2 cursor-pointer hover:bg-amber-700 rounded-full shadow-2xl">Instamart</button>
+            <button className="px-2 cursor-pointer hover:bg-amber-700 rounded-full shadow-2xl">
+              Instamart
+            </button>
           </Link>
           <Link to="/">
-            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl">Home</li>
+            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl">
+              Home
+            </li>
           </Link>
           <Link to="/contact">
-            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl">Contact</li>
+            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl">
+              Contact
+            </li>
           </Link>
           <Link to="/cart">
-            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl">Cart</li>
+            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl font-bold">
+              Cart({cart.length})
+            </li>
           </Link>
           <Link to="/about">
-            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl">About</li>
+            <li className="px-2 hover:bg-amber-700 rounded-full shadow-2xl">
+              About
+            </li>
           </Link>
           {isLoggedIn ? (
-            <button className="px-2 hover:bg-amber-700 rounded-full shadow-2xl" onClick={() => setIsLoggedIn(false)}>
+            <button
+              className="px-2 hover:bg-amber-700 rounded-full shadow-2xl"
+              onClick={() => setIsLoggedIn(false)}
+            >
               Login
             </button>
           ) : (
-            <button className="px-2 hover:bg-amber-700 rounded-full shadow-2xl" onClick={() => setIsLoggedIn(true)}>
+            <button
+              className="px-2 hover:bg-amber-700 rounded-full shadow-2xl"
+              onClick={() => setIsLoggedIn(true)}
+            >
               Logout
             </button>
           )}
+          <h2>{loginUser}</h2>
         </ul>
       </div>
     </div>

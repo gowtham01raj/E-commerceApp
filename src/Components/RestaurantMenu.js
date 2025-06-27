@@ -4,10 +4,13 @@ import { RestaurantMenuShimmer } from "./Shimmer";
 import { MdStarRate } from "react-icons/md";
 import useRestaraurantMenu from "../utils/useRestaraurantMenu";
 import { CDN_Link } from "../utils/content";
+import RestaurantCategories from "./RestaurantCategories";
 
 const RestaurantMenu = () => {
   const resId = useParams();
   const restaurantInfo = useRestaraurantMenu(resId);
+  const [showIndex,setShowIndex]= useState(0);
+  
   if (restaurantInfo === null) {
     return <RestaurantMenuShimmer />;
   }
@@ -27,11 +30,15 @@ const RestaurantMenu = () => {
   let { itemCards } =
     cards.find((c) => c?.card?.card?.itemCards)?.card?.card || [];
 
-  const categories = cards.filter((c) => c?.card?.card?.["@type"]);
-  console.log(categories);
-
+  const categories =
+    restaurantInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (c) =>
+        c?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+    
   return (
-    <div className="menu w-[60%] px-4">
+    <div className="menu  w-[90%] px-10 text-center ">
       <div className="restaurant-header flex align-middle bg-pink-300 p-5 m-2 mb-6 overflow-hidden">
         <img
           className="w-[250px] h-[150px] object-cover rounded-2xl border-sky-100 mr-10 flex flex-wrap "
@@ -62,7 +69,7 @@ const RestaurantMenu = () => {
       </div>
 
       {itemCards.length ? (
-        itemCards.map((item) => {
+        itemCards.map((item,index) => {
           const {
             id,
             name,
@@ -73,40 +80,15 @@ const RestaurantMenu = () => {
             description,
           } = item.card.info;
           return (
-            <div
-              key={id}
-              className="menu-items flex justify-between items-center px-10 border-b-2 gap-12 border-solid border-b-gray-200"
-            >
-              <div className="left flex flex-col gap-[5px]">
-                <h2>{name}</h2>
-                <h4>₹{price / 100 || defaultPrice / 100}</h4>
-                <p>{(description && description.slice(0, 60)) || "Dummy"}</p>
-                <h4 className="rating flex">
-                  <MdStarRate
-                    className="rating-logo"
-                    style={{
-                      backgroundColor:
-                        ratings?.aggregatedRating?.rating >= 4.0
-                          ? "var(--green)"
-                          : "var(--red)",
-                    }}
-                  />
-                  <span>
-                    {ratings?.aggregatedRating?.rating || 3.8} (
-                    {ratings?.aggregatedRating?.ratingCountV2 || 6})
-                  </span>
-                </h4>
-              </div>
-              <div className="right flex flex-col items-center justify-center py-1">
-                <img
-                  className="w-[150px] h-[120px] object-cover rounded-2xl border-[2px]"
-                  src={CDN_Link + imageId}
-                  alt={name}
+            <div key={index} className="max-w-full text-center items-center flex-wrap">
+              {categories.map((category, index) => (
+                <RestaurantCategories
+                  key={index}
+                  data={category?.card?.card}
+                  showItems={index===showIndex ?true:false}
+                  setShowIndex={()=> setShowIndex(index)}
                 />
-                <button className="add-btn h-[30px] text-black w-[50px] border-[1px] rounded-full px-2  cursor-pointer border-none relative bottom-5  font-medium  bg-violet-500 hover:bg-violet-600 focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700">
-                  ADD
-                </button>
-              </div>
+              ))}
             </div>
           );
         })
