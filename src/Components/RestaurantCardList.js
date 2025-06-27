@@ -1,6 +1,8 @@
 import ResData, { CDN_Link } from "../utils/content";
 import { Link } from "react-router";
 import { MdStarRate } from "react-icons/md";
+import { useContext } from "react";
+import userContext from "../utils/userContext";
 const RestaurantCard = ({
   id,
   cloudinaryImageId,
@@ -12,6 +14,7 @@ const RestaurantCard = ({
   avgRatingString,
   TotalRatingStrings
 }) => {
+  const data=useContext(userContext);
   return (
     <div className="rounded-sm w-[200px] restaurant-card m-2 p-2 border bg-neutral-200 border-solid border-black   hover:bg-green-300 justify-between ">
       <Link to={`/restaurant/${id}`}>
@@ -45,7 +48,7 @@ const RestaurantCard = ({
               : cuisines.join(", ").slice(0, 32)}
           </p>
           <p className="location">{areaName}</p>
-          {}
+          {data.loginUser}
         </div>
       </Link>
     </div>

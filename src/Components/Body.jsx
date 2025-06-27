@@ -1,9 +1,11 @@
 import RestaurantCard, { withTotalRatingStrings } from "./RestaurantCardList";
 import ResData, { CDN_Link, Swiggy_Link } from "../utils/content";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { RestaurantMenuShimmer, Shimmer } from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserOffline from "./UserOffline";
+import userContext from "../utils/userContext";
+
 const filterData = (searchText, restaurants) => {
   const filterData = restaurants.filter((restaurant) =>
     restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase())
@@ -17,6 +19,8 @@ const Body = () => {
   const [filterRestaurant, setFilterRestaurant] = useState([]);
   const RestaurantCardStringed = withTotalRatingStrings(RestaurantCard);
 
+    const {loginUser,setShowName}=useContext(userContext);
+console.log(setShowName);
   useEffect(() => {
     fetchData();
   }, []);
@@ -61,6 +65,7 @@ const Body = () => {
           >
             Search
           </button>
+          <input className="border border-black " value={loginUser} onChange={(e)=>setShowName(e.target.value)} ></input>
         </div>
         <div className="res-container flex flex-wrap ">
           {filterRestaurant.length === 0 ? (

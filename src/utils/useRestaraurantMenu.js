@@ -12,7 +12,6 @@ const useRestaraurantMenu = () => {
       const json = await data.json();
 
       setRestaurantInfo(json?.data);
-      console.log(restaurantInfo);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
