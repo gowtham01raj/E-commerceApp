@@ -5,12 +5,11 @@ import { MdStarRate } from "react-icons/md";
 import useRestaraurantMenu from "../utils/useRestaraurantMenu";
 import { CDN_Link } from "../utils/content";
 import RestaurantCategories from "./RestaurantCategories";
-
+import uniqid from 'uniqid';
 const RestaurantMenu = () => {
   const resId = useParams();
   const restaurantInfo = useRestaraurantMenu(resId);
   const [showIndex,setShowIndex]= useState(0);
-  
   if (restaurantInfo === null) {
     return <RestaurantMenuShimmer />;
   }
@@ -38,7 +37,7 @@ const RestaurantMenu = () => {
     );
     
   return (
-    <div className="menu  w-[90%] px-10 text-center ">
+    <div key={uniqid()} className="menu  w-[90%] px-10 text-center ">
       <div className="restaurant-header flex align-middle bg-pink-300 p-5 m-2 mb-6 overflow-hidden">
         <img
           className="w-[250px] h-[150px] object-cover rounded-2xl border-sky-100 mr-10 flex flex-wrap "
@@ -69,7 +68,7 @@ const RestaurantMenu = () => {
       </div>
 
       {itemCards.length ? (
-        itemCards.map((item,index) => {
+        itemCards.map((item) => {
           const {
             id,
             name,
@@ -80,10 +79,10 @@ const RestaurantMenu = () => {
             description,
           } = item.card.info;
           return (
-            <div key={index} className="max-w-full text-center items-center flex-wrap">
+            <div key={uniqid()} className="max-w-full text-center items-center flex-wrap">
               {categories.map((category, index) => (
                 <RestaurantCategories
-                  key={index}
+                  key={uniqid()}
                   data={category?.card?.card}
                   showItems={index===showIndex ?true:false}
                   setShowIndex={()=> setShowIndex(index)}
@@ -100,4 +99,4 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
-//
+
