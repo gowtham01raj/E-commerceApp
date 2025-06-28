@@ -17,7 +17,7 @@ const RestaurantCard = ({
   const data=useContext(userContext);
   return (
     <div className="rounded-sm w-[200px] restaurant-card m-2 p-2 border bg-neutral-200 border-solid border-black   hover:bg-green-300 justify-between ">
-      <Link to={`/restaurant/${id}`}>
+      <Link  to={`/restaurant/${id}`}>
         <img
           src={CDN_Link + cloudinaryImageId}
           alt={name}

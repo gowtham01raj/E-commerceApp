@@ -12,12 +12,15 @@ import uniqid from "uniqid";
 
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
-  const handleAddItem = () => {
-    dispatch(addItem("pizza"));
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
   };
+
+
+
   return (
-    <div>
-      <ul>
+    <div key={uniqid()}>
+      <ul key={uniqid()}>
         {items.map((item) => (
           <>
             <div
@@ -32,7 +35,7 @@ const ItemList = ({ items }) => {
               <div>
                 <div className="absolute flex ">
                   <button
-                    onClick={handleAddItem}
+                    onClick={()=>handleAddItem(item)}
                     className=" p-2 mx-10 top-10 rounded-lg bg-black text-white shadow-lg hover:bg-amber-400"
                   >
                     Add+
