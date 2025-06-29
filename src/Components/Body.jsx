@@ -48,7 +48,7 @@ const Body = () => {
         <div className="search-container filter flex items-center justify-center  m-4 p-4 ">
           <input
             type="text"
-            className="search-input w-3xl border border-solid border-black"
+            className="search-input w-3xl border rounded-lg border-solid border-black px-1"
             placeholder="Search"
             value={searchText}
             onChange={(e) => {
@@ -83,7 +83,7 @@ const Body = () => {
               ) : (
                 <RestaurantCard
                   key={restaurant?.info?.id}
-                  {...restaurant?.info}
+                  resData={restaurant?.info}
                 />
               )
             )
